@@ -79,7 +79,7 @@ const Navbar = () => {
 
             {drop && (
               <ul className="dropdown absolute z-10 top-[30px] flex flex-col rounded-lg w-[100px] bg-gray-200">
-                {["Members", "Events", "Products", "About Us"].map(
+                {["Members", "Events", "Products", "AboutUs"].map(
                   (number, index) => (
                     <a
                       href={`./${number}`}
