@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useRoutes } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { Footer, Loader, Navbar } from "./components";
-import { About, Events, Home, Products } from "./pages";
+import { About, Events, Home, Products,Members } from "./pages";
 function App() {
   const [load, setLoad] = useState(true);
   const { isLoading } = useSelector((state) => state.user);
@@ -27,6 +27,7 @@ function App() {
               <Route path="Products" element={<Products />} />
               <Route path="Events" element={<Events />} />
               <Route path="AboutUs" element={<About />} />
+              <Route path="Members" element={<Members />} />
             </Route>
           </Routes>
           <Footer />

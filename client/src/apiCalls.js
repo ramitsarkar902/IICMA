@@ -27,7 +27,9 @@ export const Logout = async (dispatch) => {
  */
 export const getProducts = async (setProducts) => {
   try {
-    const res = await axios.get("product/all/products");
+    const res = await axios.get(
+      "http://localhost:9000/api/product/all/products"
+    );
     setProducts(res.data);
   } catch (err) {
     console.log(err);
@@ -36,7 +38,7 @@ export const getProducts = async (setProducts) => {
 
 export const getEvents = async (setEvents) => {
   try {
-    const res = await axios.get("event/all/events");
+    const res = await axios.get("http://localhost:9000/api/event/all/events");
     setEvents(res.data);
   } catch (err) {
     console.log(err);
@@ -45,7 +47,7 @@ export const getEvents = async (setEvents) => {
 
 export const getAllMembers = async (setMembers) => {
   try {
-    const res = await axios.get("users/all/users");
+    const res = await axios.get("http://localhost:9000/api/users/all/users");
     let r = [];
     res.data.forEach((element) => {
       if (element.type === "member") r.push(element);
@@ -60,7 +62,7 @@ export const getAllMembers = async (setMembers) => {
 export const postContactUs = async (data) => {
   try {
     console.log(data);
-    await axios.post("contact/create", data);
+    await axios.post("http://localhost:9000/api/contact/create", data);
   } catch (error) {
     console.log(error);
   }
@@ -68,7 +70,10 @@ export const postContactUs = async (data) => {
 
 export const addParticipant = async ({ formData, id }) => {
   try {
-    await axios.post(`event/addparticipant/${id}`, formData);
+    await axios.post(
+      `http://localhost:9000/api/event/addparticipant/${id}`,
+      formData
+    );
   } catch (error) {
     console.log(error);
   }
@@ -76,7 +81,10 @@ export const addParticipant = async ({ formData, id }) => {
 
 export const addSponsors = async ({ formData, id }) => {
   try {
-    await axios.post(`event/addsponsor/${id}`, formData);
+    await axios.post(
+      `http://localhost:9000/api/event/addsponsor/${id}`,
+      formData
+    );
   } catch (error) {
     console.log(error);
   }
