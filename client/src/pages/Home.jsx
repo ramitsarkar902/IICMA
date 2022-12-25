@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import {
   About,
-  Member,
   Contact,
   Events,
   Hero,
+  Member,
   Statistics,
   Subgallery,
   TestimonialSection,

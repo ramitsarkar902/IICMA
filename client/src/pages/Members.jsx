@@ -36,32 +36,32 @@ const Members = () => {
     },
   ];
   return (
-    <>
-      <div className="section__header">
-        <span>Presenting</span>
-        <span id="two"> Our Members</span>
-      </div>
+    <div className="section__header">
+      <span>Presenting</span>
+      <span id="two"> Our Members</span>
       <hr class="w-[40vw] mx-auto mb-3" />
-      <div class="flex justify-center my-10">
-        <table>
-          <tr class="text-center">
-            {members.map((e) => {
-              return <th class="px-11 py-2 border-2">{e.text}</th>;
-            })}
-          </tr>
-          {members.map((e) => {
-            return (
-              <tr class="text-center">
-                <td class="px-11 py-2 border-2">{e.uid}</td>
-                <td class="px-11 py-2 border-2">{e.name}</td>
-                <td class="px-11 py-2 border-2">{e.email}</td>
-                <td class="px-11 py-2 border-2">{e.position}</td>
-              </tr>
-            );
-          })}
-        </table>
+      <div class="flex justify-center flex-wrap gap-[30px] my-5">
+        {members.map((e) => (
+          <div className="flex flex-col justify-start w-[350px] rounded-lg h-[230px] shadow-gray-400 shadow-md hover:scale-110 cursor-pointer transition-all">
+            <img
+              className="h-[40%]"
+              src="https://static9.depositphotos.com/1074452/1099/i/600/depositphotos_10999898-stock-photo-member-stamp-shows-membership-registration.jpg"
+              alt=""
+            />
+            <div
+              className="px-3 flex flex-col items-start w-full h-[60%]"
+              style={{
+                borderTop: "0.5px dotted gray",
+              }}
+            >
+              <p className="mt-3 text-base font-bold">{e.name}</p>
+              <p className="my-1 text-gray-400">{e.email}</p>
+              <p className="font-semibold">Desc</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 };
 
