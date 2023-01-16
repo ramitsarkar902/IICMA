@@ -18,19 +18,22 @@ const Member = () => {
           <span>Have a look at our</span>
           <span id="two"> Members </span>
         </div>
-        <Carousel  className="w-full h-[200px]">
+        <Carousel className="w-full h-[240px]">
           {members.map((data, i) => (
-            <Carousel.Item key={data.id} className="w-full h-[180px]">
+            <Carousel.Item className="w-full h-[180px]">
               <div className="flex justify-center items-center">
                 <img
-                  src={data.img}
+                  src="https://iicma.in/wp-content/uploads/2021/11/1462860314-4672.jpg"
                   alt="image_member"
                   className="w-32 h-32 rounded-full object-cover"
                 />
               </div>
 
-              <Carousel.Caption className="absolute bottom-0">
-                <h3 className="text-black">{data.name}</h3>
+              <Carousel.Caption className="flex justify-center">
+                <div className="absolute">
+                  <h3 className="text-black">Rajesh Gandhi</h3>
+                  <h4 className="text-zinc-400">Chairman (Non Executive)</h4>
+                </div>
               </Carousel.Caption>
             </Carousel.Item>
           ))}
