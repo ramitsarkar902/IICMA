@@ -1,10 +1,11 @@
 import express from "express";
 import {
   deleteUser,
+  getAllUsers,
+  getMembers,
   getUser,
   member,
   update,
-  getAllUsers
 } from "../controllers/user.js";
 import { verifyToken } from "../verifyToken.js";
 
@@ -12,13 +13,14 @@ const router = express.Router();
 
 router.put("/:id", verifyToken, update);
 
-router.delete("/:id", verifyToken, deleteUser);
+router.post("/:id", deleteUser); //add verifytoken
 
 router.get("/:id", getUser);
 
 router.get("/all/users", getAllUsers);
 
-router.post("/add/:id", verifyToken, member);
+router.get("/all/members", getMembers);
 
+router.post("/add/:id", member); //add verifytoken
 
 export default router;

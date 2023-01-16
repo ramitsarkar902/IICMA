@@ -32,14 +32,8 @@ export const signin = async (req, res, next) => {
     });
     const { password, ...others } = user._doc;
 
-    res
-      .cookie("access_token", token, {
-        expires: new Date(Date.now() + 1000 * 60 * 60 * 24),
-        httpOnly: true,
-        secure: false,
-      })
-      .status(200)
-      .json(others);
+    res.cookie("access_token", token, { maxAge: 900000, httpOnly: false });
+    res.status(200).json(others);
   } catch (err) {
     next(err);
   }
