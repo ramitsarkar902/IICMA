@@ -85,4 +85,11 @@ export const member = async (req, res, next) => {
   } else return next(createError(403, "Only Admin can add members!"));
 };
 
-
+export const getMembers = async (req, res, next) => {
+  try {
+    const u = await User.find({ type: "member" });
+    res.status(200).json(u);
+  } catch (error) {
+    next(error);
+  }
+};

@@ -8,6 +8,7 @@ import { animateScroll as scroll, Link } from "react-scroll";
 import { Logout } from "../apiCalls";
 import { logout } from "../redux/userSlice";
 
+
 const linkSidebarStyle = "my-6 hover:text-black";
 const Navbar = () => {
   const [drop, setDrop] = useState(false);
@@ -79,7 +80,7 @@ const Navbar = () => {
 
             {drop && (
               <ul className="dropdown absolute z-10 top-[30px] flex flex-col rounded-lg w-[100px] bg-gray-200">
-                {["Members", "Events", "Products", "About Us"].map(
+                {["Members", "Events", "Products", "AboutUs","News"].map(
                   (number, index) => (
                     <a
                       href={`./${number}`}

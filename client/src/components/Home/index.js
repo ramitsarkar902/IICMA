@@ -3,6 +3,7 @@ import Contact from "./Contact";
 import Events from "./Events";
 import Hero from "./Hero";
 import Member from "./Member";
+import News from "./News";
 import Statistics from "./Statistics";
 import Subgallery from "./Subgallery";
 import TestimonialSection from "./TestimonialSection";
@@ -17,4 +18,5 @@ export {
   Hero,
   TestimonialSection,
   Member,
+  News,
 };

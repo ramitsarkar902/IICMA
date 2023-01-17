@@ -56,7 +56,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:9000/api/",
   "devDependencies": {
     "path-browserify": "^1.0.1"
   }

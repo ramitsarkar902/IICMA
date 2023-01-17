@@ -10,7 +10,7 @@ import { verifyToken } from "../verifyToken.js";
 
 const router = express.Router();
 
-router.post("/create/:id", verifyToken, create);
+router.post("/create/:id", create);  // add verifytoken
 
 router.get("/:id", getNews);
 
@@ -18,6 +18,6 @@ router.get("/all/news", getAllNews);
 
 router.put("/:id", verifyToken, update);
 
-router.delete("/:id", verifyToken, deleteNews);
+router.delete("/:id", deleteNews);  //add verifytoken
 
 export default router;

@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import { BsFillArrowUpCircleFill } from "react-icons/bs";
 import {
   About,
-  Member,
   Contact,
   Events,
   Hero,
+  Member,
   Statistics,
   Subgallery,
   TestimonialSection,
   WhyUs,
+  News
 } from "../components/Home";
 const Home = () => {
   const [pop, setPop] = useState(false);
@@ -43,6 +44,7 @@ const Home = () => {
       <TestimonialSection />
       <Events />
       <Member />
+      <News/>
       <Contact />
 
       <BsFillArrowUpCircleFill
