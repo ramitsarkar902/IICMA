@@ -18,6 +18,6 @@ router.get("/all/news", getAllNews);
 
 router.put("/:id", verifyToken, update);
 
-router.delete("/:id", deleteNews);  //add verifytoken
+router.post("/:id", deleteNews);  //add verifytoken
 
 export default router;
