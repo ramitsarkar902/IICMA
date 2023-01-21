@@ -17,7 +17,9 @@ const app = express();
 mongoose.set("strictQuery", false);
 const connect = () => {
   mongoose
-    .connect(process.env.MONGO_URL)
+    .connect(
+      "mongodb+srv://ramit:ramit@cluster0.loxibeb.mongodb.net/?retryWrites=true&w=majority"
+    )
     .then(() => {
       console.log("Connected to DB");
     })
@@ -26,7 +28,11 @@ const connect = () => {
     });
 };
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
