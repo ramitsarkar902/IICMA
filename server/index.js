@@ -14,6 +14,7 @@ import userRoutes from "./routes/user.js";
 dotenv.config();
 const app = express();
 
+mongoose.set("strictQuery", false);
 const connect = () => {
   mongoose
     .connect(process.env.MONGO_URL)
