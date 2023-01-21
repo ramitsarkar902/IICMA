@@ -47,7 +47,7 @@ app.use("/api/event", eventRoutes);
 app.use("/api/product", productRoutes);
 app.use("/api/contact", contactRoutes);
 
-app.listen(process.env.port || 9000, () => {
+app.listen(process.env.PORT || 9000, () => {
   console.log("Server started");
   connect();
 });
