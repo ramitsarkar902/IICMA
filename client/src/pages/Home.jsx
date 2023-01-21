@@ -10,6 +10,7 @@ import {
   Subgallery,
   TestimonialSection,
   WhyUs,
+  News
 } from "../components/Home";
 const Home = () => {
   const [pop, setPop] = useState(false);
@@ -43,6 +44,7 @@ const Home = () => {
       <TestimonialSection />
       <Events />
       <Member />
+      <News/>
       <Contact />
 
       <BsFillArrowUpCircleFill

@@ -136,7 +136,7 @@ export const addNews = async ({ img, desc, title }) => {
 
 export const deleteNews = async ({ id }) => {
   try {
-    await axios.delete(`http://localhost:9000/api/news/${id}`, {
+    await axios.post(`http://localhost:9000/api/news/${id}`, {
       id: "635846fdc9c208c9445c7c43",
     });
   } catch (error) {
