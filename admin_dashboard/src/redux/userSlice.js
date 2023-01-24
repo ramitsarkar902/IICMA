@@ -39,6 +39,7 @@ export const userSlice = createSlice({
     },
     newsFetchSuccess: (state, action) => {
       state.newsData = action.payload;
+      state.isLoading = false;
     },
     salesFetchSuccess: (state, action) => {
       state.salesData = action.payload;
