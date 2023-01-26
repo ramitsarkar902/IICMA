@@ -6,13 +6,15 @@ import {
   fetchFailure,
   fetchStart,
   loginFailure,
+  loginSuccess,
   newsFetchSuccess,
   productFetchSuccess,
   salesFetchSuccess,
   userLogin,
 } from "./redux/userSlice";
+axios.defaults.withCredentials = true;
 
-const base_url = "https://iicmaserver-production.up.railway.app/api/";
+const base_url = "http://localhost:9000/api/";
 
 export const getUser = async (dispatch, userId) => {
   try {
@@ -130,5 +132,20 @@ export const deleteNews = async ({ id }) => {
     });
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+export const login = async ({ username, password }, dispatch, navigate) => {
+  try {
+    setTimeout(async () => {
+      const res = await axios.post(`${base_url}auth/signin/`, {
+        username: username,
+        password: password,
+      });
+      dispatch(loginSuccess(res.data));
+      navigate("/dashboard");
+    }, 2000);
+  } catch (err) {
+    dispatch(loginFailure(err));
   }
 };

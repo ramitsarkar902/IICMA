@@ -4,7 +4,7 @@ const initialState = {
   userId: "635846fdc9c208c9445c7c43",
   userData: null,
   error: null,
-  isLoading: true,
+  isLoading: false,
   productData: null,
   customerData: null,
   salesData: null,
@@ -16,15 +16,21 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    userLogin: (state, action) => {
+    loginStart: (state) => {
+      state.isLoading = true;
+    },
+    loginSuccess: (state, action) => {
+      state.isLoading = false;
       state.userData = action.payload;
-      state.error = null;
     },
     loginFailure: (state, action) => {
+      state.isLoading = false;
       state.error = action.payload;
     },
-    logOut: (state, action) => {
+    logout: (state) => {
       state.userData = null;
+      state.isLoading = false;
+      state.error = false;
     },
     productFetchSuccess: (state, action) => {
       state.productData = action.payload;
@@ -55,8 +61,10 @@ export const userSlice = createSlice({
 
 export const {
   userLogin,
+  loginStart,
+  loginSuccess,
   loginFailure,
-  logOut,
+  logout,
   productFetchSuccess,
   customerFetchSuccess,
   fetchStart,

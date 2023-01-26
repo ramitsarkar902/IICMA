@@ -3,6 +3,7 @@ import {
   DarkModeOutlined,
   LightModeOutlined,
   Menu as MenuIcon,
+  NavigateBefore,
   Search,
   SettingsOutlined,
 } from "@mui/icons-material";
@@ -20,14 +21,15 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { changeTheme } from "../redux/themeSlice";
-import { logOut } from "../redux/userSlice";
+import { logout } from "../redux/userSlice";
 import FlexBetween from "./FlexBetween";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
-
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
@@ -128,7 +130,8 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 onClick={(e) => {
                   e.preventDefault();
                   handleClose();
-                  dispatch(logOut());
+                  dispatch(logout());
+                  navigate("/");
                 }}
               >
                 Log Out
