@@ -43,6 +43,7 @@ const Login = () => {
             <input
               placeholder="Enter Username"
               variant="outlined"
+              type="text"
               name="username"
               value={state.username}
               onChange={handleChange}
@@ -52,6 +53,7 @@ const Login = () => {
           <div className="mb-2">
             <input
               placeholder="Enter password"
+              type="password"
               value={state.password}
               onChange={handleChange}
               name="password"
