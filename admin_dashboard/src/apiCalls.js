@@ -14,6 +14,7 @@ import {
 } from "./redux/userSlice";
 axios.defaults.withCredentials = true;
 
+//  main url+ https://iicmaserver-production.up.railway.app
 const base_url = "https://iicmaserver-production.up.railway.app/api/";
 
 export const getUser = async (dispatch, userId) => {
@@ -22,7 +23,6 @@ export const getUser = async (dispatch, userId) => {
       username: "hawk",
       password: "welcome",
     });
-
     dispatch(userLogin(user.data));
   } catch (err) {
     dispatch(loginFailure(err.message));
@@ -136,16 +136,32 @@ export const deleteNews = async ({ id }) => {
 };
 
 export const login = async ({ username, password }, dispatch, navigate) => {
-  try {
-    setTimeout(async () => {
-      const res = await axios.post(`${base_url}auth/signin/`, {
+  setTimeout(async () => {
+    try {
+      const res = await axios.post(`${base_url}auth/signin`, {
         username: username,
         password: password,
       });
-      dispatch(loginSuccess(res.data));
-      navigate("/dashboard");
-    }, 2000);
+      console.log(res.status);
+
+      if (res.status === 200) {
+        dispatch(loginSuccess(res.data));
+        navigate("/dashboard");
+      }
+    } catch (err) {
+      dispatch(loginFailure(err.response.data));
+    }
+  }, 2000);
+};
+
+export const pwreset = async ({ username }, setmessage) => {
+  try {
+    const res = await axios.post(`${base_url}auth/forgotpassword`, {
+      username: username,
+    });
+
+    setmessage(res.data);
   } catch (err) {
-    dispatch(loginFailure(err));
+    console.log(err);
   }
 };
