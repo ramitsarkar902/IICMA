@@ -20,7 +20,7 @@ import {
   useTheme,
 } from "@mui/material";
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { changeTheme } from "../redux/themeSlice";
 import { logout } from "../redux/userSlice";
@@ -30,6 +30,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
   const dispatch = useDispatch();
   const theme = useTheme();
   const navigate = useNavigate();
+  const { userData } = useSelector((state) => state.user);
   const [anchorEl, setAnchorEl] = useState(null);
   const isOpen = Boolean(anchorEl);
   const handleClick = (event) => setAnchorEl(event.currentTarget);
@@ -135,6 +136,14 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
                 }}
               >
                 Log Out
+              </MenuItem>
+              <MenuItem
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(`/update/${userData._id}`);
+                }}
+              >
+                Update User
               </MenuItem>
             </Menu>
           </FlexBetween>

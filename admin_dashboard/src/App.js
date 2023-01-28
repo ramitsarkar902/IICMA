@@ -4,7 +4,7 @@ import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { getUser } from "./apiCalls";
-import { Dashboard, Layout, Login, Member, News } from "./pages";
+import { Dashboard, Layout, Login, Member, News, Updateuser } from "./pages";
 import { ProtectedRoute } from "./protectedRoute";
 import { themeSettings } from "./theme";
 function App() {
@@ -43,6 +43,22 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Member />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/update/:id"
+              element={
+                <ProtectedRoute>
+                  <Updateuser />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <ProtectedRoute>
+                  <Updateuser />
                 </ProtectedRoute>
               }
             />

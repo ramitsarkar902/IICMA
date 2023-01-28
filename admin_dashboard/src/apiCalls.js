@@ -142,8 +142,6 @@ export const login = async ({ username, password }, dispatch, navigate) => {
         username: username,
         password: password,
       });
-      console.log(res.status);
-
       if (res.status === 200) {
         dispatch(loginSuccess(res.data));
         navigate("/dashboard");
