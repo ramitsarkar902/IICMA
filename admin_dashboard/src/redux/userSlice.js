@@ -3,6 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
   userId: "635846fdc9c208c9445c7c43",
   userData: null,
+  userimg: null,
   error: null,
   isLoading: false,
   productData: null,
@@ -23,6 +24,9 @@ export const userSlice = createSlice({
     loginSuccess: (state, action) => {
       state.isLoading = false;
       state.userData = action.payload;
+    },
+    setuserimage: (state, action) => {
+      state.userimg = action.payload;
     },
     loginFailure: (state, action) => {
       state.isLoading = false;
@@ -73,6 +77,7 @@ export const {
   salesFetchSuccess,
   adminFetchSuccess,
   newsFetchSuccess,
+  setuserimage,
 } = userSlice.actions;
 
 export default userSlice.reducer;
