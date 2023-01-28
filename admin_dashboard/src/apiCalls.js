@@ -10,7 +10,6 @@ import {
   newsFetchSuccess,
   productFetchSuccess,
   salesFetchSuccess,
-  setuserimage,
   userLogin,
 } from "./redux/userSlice";
 axios.defaults.withCredentials = true;
@@ -145,8 +144,6 @@ export const login = async ({ username, password }, dispatch, navigate) => {
       });
       if (res.status === 200) {
         dispatch(loginSuccess(res.data));
-        const imgurl = `${base_url}upload/user/${res.data._id}`;
-        dispatch(setuserimage(imgurl));
         navigate("/dashboard");
       }
     } catch (err) {
