@@ -15,7 +15,7 @@ import {
 axios.defaults.withCredentials = true;
 
 //  main url+ https://iicmaserver-production.up.railway.app
-const base_url = "https://iicmaserver-production.up.railway.app/api/";
+const base_url = "http://localhost:9000/api/";
 
 export const getUser = async (dispatch, userId) => {
   try {
@@ -29,15 +29,45 @@ export const getUser = async (dispatch, userId) => {
   }
 };
 
+export const addProduct = async ({ title, filename, file, desc, userId }) => {
+  try {
+    await axios.post(
+      `${base_url}upload/product/${userId}`,
+      {
+        title: title,
+        desc: desc,
+        file: file,
+        filename: filename,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getProducts = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`${base_url}client/products`);
+      const res = await axios.get(`${base_url}product/all/products`);
       dispatch(productFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
     dispatch(fetchFailure(error.message));
+  }
+};
+
+export const deleteProduct = async ({ userId, id }) => {
+  try {
+    console.log({ userId, id });
+    await axios.delete(`${base_url}product/${userId}`, { data: { id: id } });
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -147,7 +177,8 @@ export const login = async ({ username, password }, dispatch, navigate) => {
         navigate("/dashboard");
       }
     } catch (err) {
-      dispatch(loginFailure(err.response.data));
+      /*  dispatch(loginFailure(err.response.data)); */
+      console.log(err);
     }
   }, 2000);
 };
