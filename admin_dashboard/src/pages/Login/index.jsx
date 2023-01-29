@@ -39,14 +39,14 @@ const Login = () => {
 
   return (
     <div
-      className="relative flex flex-col justify-center min-h-screen overflow-hidden"
+      className="relative flex flex-col justify-center min-h-screen overflow-hidden bg-no-repeat bg-cover"
       style={{
         backgroundImage:
-          "url('https://c4.wallpaperflare.com/wallpaper/946/557/290/ice-cream-food-colorful-wallpaper-preview.jpg')",
+          "url('https://c4.wallpaperflare.com/wallpaper/946/557/290/ice-cream-food-colorful-wallpaper-preview.jpg')"
       }}
     >
-      <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-xl">
-        <h1 className="text-3xl font-semibold text-center text-purple-700 underline">
+      <div className="w-full p-6 m-auto bg-slate-50 rounded-md shadow-md lg:max-w-xl">
+        <h1 className="text-3xl font-semibold text-center text-amber-500">
           {!pwReset ? "Sign in" : "Reset Password"}
           {error && (
             <p className="text-red-600 text-sm no-underline mt-3">{error}</p>
@@ -62,7 +62,7 @@ const Login = () => {
                 name="username"
                 value={state.username}
                 onChange={handleChange}
-                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-2 mt-2 text-amber-500 bg-white border rounded-md focus:border-amber-400 focus:ring-amber-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <div className="mb-2">
@@ -72,13 +72,13 @@ const Login = () => {
                 value={state.password}
                 onChange={handleChange}
                 name="password"
-                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-2 mt-2 text-amber-500 bg-white border rounded-md focus:border-amber-400 focus:ring-amber-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <div className="mt-6">
               <button
                 type="submit"
-                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600 flex justify-center items-center"
+                className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-amber-500 rounded-md hover:bg-amber-400 focus:outline-none focus:bg-amber-500 flex justify-center items-center"
               >
                 {isLoading ? (
                   <>
@@ -95,7 +95,7 @@ const Login = () => {
         {!pwReset && (
           <div className="text-black justify-center flex w-full mt-2">
             <p
-              className="hover:text-blue-400 cursor-pointer"
+              className="hover:text-amber-600 cursor-pointer text-gray-800"
               onClick={() => {
                 setPwReset(true);
               }}
@@ -114,12 +114,12 @@ const Login = () => {
                 name="username"
                 value={state.username}
                 onChange={handleChange}
-                className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                className="block w-full px-4 py-2 mt-2 text-amber-500 bg-white border rounded-md focus:border-amber-300 focus:ring-amber-300 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <button
               type="submit"
-              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-purple-700 rounded-md hover:bg-purple-600 focus:outline-none focus:bg-purple-600 flex justify-center items-center"
+              className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-amber-500 rounded-md hover:bg-amber-600 focus:outline-none focus:bg-amber-600 flex justify-center items-center"
             >
               {isLoading ? (
                 <>
