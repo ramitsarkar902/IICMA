@@ -1,4 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
 
 const initialState = {
   userId: "635846fdc9c208c9445c7c43",
@@ -26,6 +28,7 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.userData = action.payload.others;
       state.token = action.payload.token;
+      cookies.set("myCat", action.payload.token, { path: "/" });
     },
     loginFailure: (state, action) => {
       state.isLoading = false;
