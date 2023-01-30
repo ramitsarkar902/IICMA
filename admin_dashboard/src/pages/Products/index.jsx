@@ -33,13 +33,6 @@ function Copyright(props) {
 }
 
 const Products = () => {
-  const [file, setFile] = useState();
-
-  const handleFileChange = (e) => {
-    if (e.target.files) {
-      setFile(e.target.files[0]);
-    }
-  };
   const theme = useTheme();
   const dispatch = useDispatch();
   const { isLoading, productData, userData } = useSelector(
@@ -78,6 +71,7 @@ const Products = () => {
     },
   ];
 
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -85,12 +79,11 @@ const Products = () => {
       title: data.get("title"),
       desc: data.get("desc"),
       file: data.get("img"),
-      filename: data.get("filename"),
       userId: userData._id,
     });
     setTimeout(() => {
       getProducts(dispatch);
-    }, 2000);
+    }, 5000);
   };
 
   const handleDelete = ({ id }) => {
@@ -101,7 +94,7 @@ const Products = () => {
 
     setTimeout(() => {
       getProducts(dispatch);
-    }, 2000);
+    }, 5000);
   };
 
   return (
@@ -157,6 +150,7 @@ const Products = () => {
                     name="img"
                     label="Image"
                     type="file"
+                    inputProps={{ accept: "image/*" }}
                     id="img"
                   />
                 </Grid>

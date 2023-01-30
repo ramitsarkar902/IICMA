@@ -15,7 +15,7 @@ import {
 axios.defaults.withCredentials = true;
 
 //  main url+ https://iicmaserver-production.up.railway.app
-const base_url = "http://localhost:9000/api/";
+const base_url = "https://iicmaserver-production.up.railway.app/api/";
 
 export const getUser = async (dispatch, userId) => {
   try {
@@ -29,7 +29,7 @@ export const getUser = async (dispatch, userId) => {
   }
 };
 
-export const addProduct = async ({ title, filename, file, desc, userId }) => {
+export const addProduct = async ({ title, file, desc, userId }) => {
   try {
     await axios.post(
       `${base_url}upload/product/${userId}`,
@@ -37,7 +37,6 @@ export const addProduct = async ({ title, filename, file, desc, userId }) => {
         title: title,
         desc: desc,
         file: file,
-        filename: filename,
       },
       {
         headers: {
@@ -64,7 +63,6 @@ export const getProducts = async (dispatch) => {
 
 export const deleteProduct = async ({ userId, id }) => {
   try {
-    console.log({ userId, id });
     await axios.delete(`${base_url}product/${userId}`, { data: { id: id } });
   } catch (error) {
     console.log(error);
