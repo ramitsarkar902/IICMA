@@ -15,7 +15,7 @@ import {
 axios.defaults.withCredentials = true;
 
 //  main url+ https://iicmaserver-production.up.railway.app
-const base_url = "https://iicmaserver-production.up.railway.app/api/";
+const base_url = "http://localhost:9000/api/";
 
 export const getUser = async (dispatch, userId) => {
   try {

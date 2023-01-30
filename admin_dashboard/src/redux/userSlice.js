@@ -5,12 +5,13 @@ const initialState = {
   userData: null,
   error: null,
   isLoading: false,
+  token: null,
   productData: null,
   customerData: null,
   salesData: null,
   adminsData: null,
   newsData: null,
-  isUpdated:false,
+  isUpdated: false,
 };
 
 export const userSlice = createSlice({
@@ -23,7 +24,8 @@ export const userSlice = createSlice({
     },
     loginSuccess: (state, action) => {
       state.isLoading = false;
-      state.userData = action.payload;
+      state.userData = action.payload.others;
+      state.token = action.payload.token;
     },
     loginFailure: (state, action) => {
       state.isLoading = false;
@@ -58,10 +60,10 @@ export const userSlice = createSlice({
     fetchFailure: (state, action) => {
       state.error = action.payload;
     },
-    passwordUpdate:(state) =>{
+    passwordUpdate: (state) => {
       state.isUpdated = true;
       state.error = false;
-    }
+    },
   },
 });
 
