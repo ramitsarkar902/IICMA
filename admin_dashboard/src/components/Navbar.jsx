@@ -3,7 +3,6 @@ import {
   DarkModeOutlined,
   LightModeOutlined,
   Menu as MenuIcon,
-  NavigateBefore,
   Search,
   SettingsOutlined,
 } from "@mui/icons-material";

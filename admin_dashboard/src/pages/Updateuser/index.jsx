@@ -1,13 +1,106 @@
-import React from "react";
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { updatePassword, updateUserdetails } from "../../apiCalls";
 
 const Updateuser = () => {
-  const state = useState({currentpassword:"",newpassword:"",confirmpassword:""});
-  // const handleClick =()=>{
-  //   console.log(state.currentpassword);
-  //   console.log(state.newpassword);
-  //   console.log(state.confirmpassword);
-  // }
+  const [formData, setFormData] = useState({});
+  const [userformData, setUserFormData] = useState({});
+  const [time, setTime] = useState(false);
+  const [userTime, setUsertime] = useState(false);
+  const { userData } = useSelector((state) => state.user);
+  const [formValue, setFormValue] = useState({
+    currentpassword: "",
+    newpassword: "",
+    confirmpassword: "",
+  });
+  const [userformValue, setUserFormValue] = useState({
+    name: "",
+    email: "",
+    phonenumber: "",
+    password: "",
+  });
+  const [wrong, setWrong] = useState(false);
+  const [message, setMessage] = useState("");
+  const [userMessage, setuserMessage] = useState("");
+
+  const handleUsersubmit = (e) => {
+    e.preventDefault();
+    let email = userformData.email;
+    let phoneNo = userformData.phonenumber;
+    if (email.length > 0 && phoneNo.length === 10) console.log("yes");
+    /* updateUserdetails(
+      {
+        username: userData.username,
+        userid: userData._id,
+        password: userformData.password,
+        name: userformData.name,
+        email: userformData.email,
+        phonenumber: userformData.phonenumber,
+      },
+      setuserMessage
+    ); */
+    setUsertime(true);
+    setTimeout(() => {
+      setUsertime(false);
+    }, 3000);
+    setUserFormValue({
+      name: "",
+      email: "",
+      phonenumber: "",
+      password: "",
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (formData.newpassword !== formData.confirmpassword) {
+      setWrong(true);
+      setFormValue({
+        newpassword: "",
+        confirmpassword: "",
+      });
+    } else {
+      updatePassword(
+        {
+          username: userData.username,
+          userid: userData._id,
+          currentpassword: formData.currentpassword,
+          newpassword: formData.newpassword,
+        },
+        setMessage
+      );
+      setTime(true);
+      setTimeout(() => {
+        setTime(false);
+      }, 3000);
+      setWrong(false);
+      setFormValue({
+        currentpassword: "",
+        newpassword: "",
+        confirmpassword: "",
+      });
+    }
+  };
+
+  const handleChange = (event) => {
+    setFormData({
+      ...formData,
+      [event.target.name]: event.target.value,
+    });
+    setFormValue({
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleUserchange = (event) => {
+    setUserFormData({
+      ...userformData,
+      [event.target.name]: event.target.value,
+    });
+    setUserFormValue({
+      [event.target.name]: event.target.value,
+    });
+  };
   return (
     <div>
       <div className="container flex mt-[5rem] items-center justify-around">
@@ -15,14 +108,15 @@ const Updateuser = () => {
           <h1 className="text-4xl font-semibold text-center text-slate-50">
             Update Password
           </h1>
-          <form className="mt-6">
+          <form className="mt-6" onSubmit={handleSubmit}>
             <div className="mb-4">
               <input
                 placeholder="Enter current password"
                 variant="outlined"
-                type="text"
-                // value={state.currentpassword}
-                name="username"
+                type="password"
+                name="currentpassword"
+                value={formValue.currentpassword}
+                onChange={handleChange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -30,8 +124,9 @@ const Updateuser = () => {
               <input
                 placeholder="Enter new password"
                 type="password"
-                name="password"
-                // value={state.newpassword}
+                name="newpassword"
+                value={formValue.newpassword}
+                onChange={handleChange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -39,8 +134,9 @@ const Updateuser = () => {
               <input
                 placeholder="Re-enter new password"
                 type="password"
-                name="password"
-                // value={state.confirmpassword}
+                name="confirmpassword"
+                value={formValue.confirmpassword}
+                onChange={handleChange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -48,26 +144,33 @@ const Updateuser = () => {
               <button
                 type="submit"
                 className="w-full px-4 py-2 tracking-wide text-slate-50 transition-colors duration-200 transform bg-blue-600 rounded-md hover:bg-blue-700 focus:outline-none focus:bg-blue-800 flex justify-center items-center"
-                // onclick={()=>{
-                //   handleClick()
-                // }}
               >
                 Update
               </button>
             </div>
+            {wrong && (
+              <div className="wrong w-[20rem] mt-5">
+                <p className="text-red-500 text-xs">
+                  The passwords dont match. Re-enter the passwords.
+                </p>
+              </div>
+            )}
+            {time && message}
           </form>
         </div>
         <div className="container2 h-[50vh] flex flex-col justify-around p-3">
           <h1 className="text-4xl font-semibold text-center text-slate-50">
             Update Other Details
           </h1>
-          <form className="mt-6">
+          <form className="mt-6" onSubmit={handleUsersubmit}>
             <div className="mb-4">
               <input
                 placeholder="Update name"
                 variant="outlined"
                 type="text"
-                name="username"
+                name="name"
+                value={userformValue.name}
+                onChange={handleUserchange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -76,22 +179,30 @@ const Updateuser = () => {
                 placeholder="Update email"
                 type="email"
                 name="email"
+                id="email"
+                value={userformValue.email}
+                onChange={handleUserchange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <div className="mb-4">
               <input
                 placeholder="Update phone number"
-                type="number"
-                name="number"
+                type="text"
+                name="phonenumber"
+                value={userformValue.phonenumber}
+                onChange={handleUserchange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
             <div className="mb-4">
               <input
-                placeholder="Upload new image url"
-                type="text"
+                placeholder="Enter password"
+                type="password"
                 name="password"
+                required
+                value={userformValue.password}
+                onChange={handleUserchange}
                 className="block w-[20rem] px-4 py-2 mt-2 placeholder-slate-50 text-white bg-blue-900 border border-blue-600 rounded-md focus:ring-blue-500 focus:outline-none focus:ring focus:ring-opacity-40"
               />
             </div>
@@ -102,6 +213,9 @@ const Updateuser = () => {
               >
                 Update
               </button>
+              <div className="flex justify-center mt-3">
+                {userTime && userMessage}
+              </div>
             </div>
           </form>
         </div>

@@ -4,7 +4,15 @@ import { useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Navigate, Route, Routes } from "react-router-dom";
 import { getUser } from "./apiCalls";
-import { Dashboard, Layout, Login, Member, News, Updateuser } from "./pages";
+import {
+  Dashboard,
+  Layout,
+  Login,
+  Member,
+  News,
+  Products,
+  Updateuser,
+} from "./pages";
 import { ProtectedRoute } from "./protectedRoute";
 import { themeSettings } from "./theme";
 function App() {
@@ -43,6 +51,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Member />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/products"
+              element={
+                <ProtectedRoute>
+                  <Products />
                 </ProtectedRoute>
               }
             />

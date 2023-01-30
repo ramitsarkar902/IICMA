@@ -10,7 +10,6 @@ import {
   newsFetchSuccess,
   productFetchSuccess,
   salesFetchSuccess,
-  setuserimage,
   userLogin,
 } from "./redux/userSlice";
 axios.defaults.withCredentials = true;
@@ -30,15 +29,45 @@ export const getUser = async (dispatch, userId) => {
   }
 };
 
+export const addProduct = async ({ title, filename, file, desc, userId }) => {
+  try {
+    await axios.post(
+      `${base_url}upload/product/${userId}`,
+      {
+        title: title,
+        desc: desc,
+        file: file,
+        filename: filename,
+      },
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getProducts = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`${base_url}client/products`);
+      const res = await axios.get(`${base_url}product/all/products`);
       dispatch(productFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
     dispatch(fetchFailure(error.message));
+  }
+};
+
+export const deleteProduct = async ({ userId, id }) => {
+  try {
+    console.log({ userId, id });
+    await axios.delete(`${base_url}product/${userId}`, { data: { id: id } });
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -145,12 +174,11 @@ export const login = async ({ username, password }, dispatch, navigate) => {
       });
       if (res.status === 200) {
         dispatch(loginSuccess(res.data));
-        const imgurl = `${base_url}upload/user/${res.data._id}`;
-        dispatch(setuserimage(imgurl));
         navigate("/dashboard");
       }
     } catch (err) {
       dispatch(loginFailure(err.response.data));
+      console.log(err);
     }
   }, 2000);
 };
@@ -162,6 +190,45 @@ export const pwreset = async ({ username }, setmessage) => {
     });
 
     setmessage(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updatePassword = async (
+  { username, userid, currentpassword, newpassword },
+  setMessage
+) => {
+  try {
+    const res = await axios.put(`${base_url}users/${userid}`, {
+      username: username,
+      currentpassword: currentpassword,
+      newpassword: newpassword,
+    });
+    if (res.status === 200) {
+      setMessage("Successfully Changed Password");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateUserdetails = async (
+  { username, userid, password, name, email, phonenumber },
+  setuserMessage
+) => {
+  try {
+    const res = await axios.put(`${base_url}users/${userid}`, {
+      username: username,
+      password: password,
+      name: name,
+      email: email,
+      phoneNo: phonenumber,
+    });
+    if (res.status === 200) {
+      console.log("Successfully changed details");
+      setuserMessage("Successfully Updated Details");
+    }
   } catch (err) {
     console.log(err);
   }
