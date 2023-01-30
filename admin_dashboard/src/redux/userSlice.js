@@ -28,7 +28,7 @@ export const userSlice = createSlice({
       state.isLoading = false;
       state.userData = action.payload.others;
       state.token = action.payload.token;
-      cookies.set("myCat", action.payload.token, { path: "/" });
+      cookies.set("access_token", action.payload.token, { path: "/" });
     },
     loginFailure: (state, action) => {
       state.isLoading = false;
