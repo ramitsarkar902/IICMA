@@ -176,7 +176,6 @@ export const login = async ({ username, password }, dispatch, navigate) => {
       }
     } catch (err) {
       dispatch(loginFailure(err.response.data));
-      console.log(err);
     }
   }, 2000);
 };
