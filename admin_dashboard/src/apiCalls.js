@@ -175,7 +175,7 @@ export const login = async ({ username, password }, dispatch, navigate) => {
         navigate("/dashboard");
       }
     } catch (err) {
-      /*  dispatch(loginFailure(err.response.data)); */
+      dispatch(loginFailure(err.response.data));
       console.log(err);
     }
   }, 2000);
@@ -188,6 +188,45 @@ export const pwreset = async ({ username }, setmessage) => {
     });
 
     setmessage(res.data);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updatePassword = async (
+  { username, userid, currentpassword, newpassword },
+  setMessage
+) => {
+  try {
+    const res = await axios.put(`${base_url}users/${userid}`, {
+      username: username,
+      currentpassword: currentpassword,
+      newpassword: newpassword,
+    });
+    if (res.status === 200) {
+      setMessage("Successfully Changed Password");
+    }
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const updateUserdetails = async (
+  { username, userid, password, name, email, phonenumber },
+  setuserMessage
+) => {
+  try {
+    const res = await axios.put(`${base_url}users/${userid}`, {
+      username: username,
+      password: password,
+      name: name,
+      email: email,
+      phoneNo: phonenumber,
+    });
+    if (res.status === 200) {
+      console.log("Successfully changed details");
+      setuserMessage("Successfully Updated Details");
+    }
   } catch (err) {
     console.log(err);
   }
