@@ -1,8 +1,12 @@
 {
   "rewrites": [
     {
-      "source": "/(.*)",
-      "destination": "https://iicmaserver-production.up.railway.app/api"
+      "source": "/api/:path*",
+      "destination": "https://iicmaserver-production.up.railway.app/:path*"
+    },
+    {
+      "source": "/api/:path*/",
+      "destination": "https://iicmaserver-production.up.railway.app/:path*/"
     }
   ]
 }
