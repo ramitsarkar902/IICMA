@@ -184,10 +184,10 @@ const Products = () => {
         sx={{
           display: "flex",
           flexWrap: "wrap",
-          width: "80%",
+          width: "100%",
           height: "100vh",
           gap: "40px",
-          overflowY: "scroll",
+          overflowY:"scroll",
         }}
       >
         {productData &&
@@ -232,39 +232,7 @@ const Products = () => {
             </div>
           ))}
       </Box>
-      <Box
-        sx={{
-          marginTop: 8,
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        <Header subtitle="Delete a Product" />
-        {/* <Box component="form" noValidate onSubmit={handleDelete} sx={{ mt: 3 }}>
-          <Grid container spacing={2}>
-            <Grid item xs={12}>
-              <TextField
-                required
-                fullWidth
-                name="username"
-                label="UserName"
-                type="text"
-                id="username"
-                autoComplete="new-username"
-              />
-            </Grid>
-          </Grid>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            sx={{ mt: 3, mb: 2 }}
-          >
-            Delete
-          </Button>
-        </Box> */}
-      </Box>
+      
     </Box>
   );
 };

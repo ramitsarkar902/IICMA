@@ -20,21 +20,22 @@ const persistConfig = {
   storage,
 };
 
-/* const persistedReducer = persistReducer(persistConfig, reducers); */
 const reducers = combineReducers({
   theme: themeReducer,
   user: userReducer,
 });
 
+const persistedReducer = persistReducer(persistConfig, reducers);
+
 export const store = configureStore({
-  reducer: reducers,
+  reducer: persistedReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-  /* devTools: false, */  //add during production to disable dev tools
+  devTools: false,
 });
 
 export const persistor = persistStore(store);
