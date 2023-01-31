@@ -153,59 +153,68 @@ const Events = () => {
       </Box>
       <Header subtitle="List of Events" />
       <Box mt="40px" height="auto">
-        {eventData.map((e) => (
-          <div className="mx-auto bg-gray-700 h-auto py-5 flex flex-wrap items-center justify-center px-8">
-            <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
-              <img
-                className="w-full h-64 bg-top bg-cover rounded-t"
-                src={e.img}
-                alt="event"
-              />
-              <div className="flex flex-col w-full md:flex-row">
-                <div className="flex flex-row justify-around p-4 font-bold leading-none text-gray-800 uppercase bg-gray-400 rounded md:flex-col md:items-center md:justify-center md:w-1/4">
-                  <div className="md:text-3xl">Event On:</div>
+        {eventData ? (
+          eventData.map((e) => (
+            <div className="mx-auto bg-gray-700 h-auto py-5 flex flex-wrap items-center justify-center px-8">
+              <div className="flex flex-col w-full bg-white rounded shadow-lg sm:w-3/4 md:w-1/2 lg:w-3/5">
+                <img
+                  className="w-full h-64 bg-top bg-cover rounded-t"
+                  src={e.img}
+                  alt="event"
+                />
+                <div className="flex flex-col w-full md:flex-row">
+                  <div className="flex flex-row justify-around p-4 font-bold leading-none text-gray-800 uppercase bg-gray-400 rounded md:flex-col md:items-center md:justify-center md:w-1/4">
+                    <div className="md:text-3xl">Event On:</div>
 
-                  <div className="md:text-xl">{e.organizingDate}</div>
-                </div>
-                <div className="p-4 font-normal text-gray-800 md:w-3/4 relative">
-                  <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">
-                    {e.title}
-                  </h1>
-                  <p className="leading-normal">{e.desc}</p>
-                  <div className="flex flex-col items-start mt-4 text-gray-700">
-                    <div className="w-1/2 flex items-center">
-                      Collected Amount:{" "}
-                      <p className="text-red-400 font-semibold text-md ml-1">
-                        Rs {e.donation}
-                      </p>
-                    </div>
-                    <div className="w-1/2 flex items-center">
-                      No Of Participants:{" "}
-                      <p className="text-red-400 font-semibold text-md ml-1">
-                        {e.participants.length}
-                      </p>
-                    </div>
-                    <div className="w-1/2 flex items-center">
-                      No Of Sponsors:{" "}
-                      <p className="text-red-400 font-semibold text-md ml-1">
-                        {e.sponsors.length}
-                      </p>
-                    </div>
+                    <div className="md:text-xl">{e.organizingDate}</div>
                   </div>
-                  <button
-                    className="absolute right-3 bottom-5"
-                    onClick={(event) => {
-                      event.preventDefault();
-                      handleDelete({ id: userData._id, eventId: e._id });
-                    }}
-                  >
-                    <DeleteIcon />
-                  </button>
+                  <div className="p-4 font-normal text-gray-800 md:w-3/4 relative">
+                    <h1 className="mb-4 text-4xl font-bold leading-none tracking-tight text-gray-800">
+                      {e.title}
+                    </h1>
+                    <p className="leading-normal">{e.desc}</p>
+                    <div className="flex flex-col items-start mt-4 text-gray-700">
+                      <div className="w-1/2 flex items-center">
+                        Collected Amount:{" "}
+                        <p className="text-red-400 font-semibold text-md ml-1">
+                          Rs {e.donation}
+                        </p>
+                      </div>
+                      <div className="w-1/2 flex items-center">
+                        No Of Participants:{" "}
+                        <p className="text-red-400 font-semibold text-md ml-1">
+                          {e.participants.length}
+                        </p>
+                      </div>
+                      <div className="w-1/2 flex items-center">
+                        No Of Sponsors:{" "}
+                        <p className="text-red-400 font-semibold text-md ml-1">
+                          {e.sponsors.length}
+                        </p>
+                      </div>
+                    </div>
+                    <button
+                      className="absolute right-3 bottom-5"
+                      onClick={(event) => {
+                        event.preventDefault();
+                        handleDelete({ id: userData._id, eventId: e._id });
+                      }}
+                    >
+                      <DeleteIcon />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
+          ))
+        ) : (
+          <div className="flex w-full justify-center">
+            <img
+              src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+              alt="loading"
+            />
           </div>
-        ))}
+        )}
       </Box>
       {/* <Box
         sx={{

@@ -71,7 +71,6 @@ const Products = () => {
     },
   ];
 
-
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -185,14 +184,14 @@ const Products = () => {
           display: "flex",
           flexWrap: "wrap",
           width: "100%",
-          height: "100vh",
+          height: "auto",
           gap: "40px",
-          overflowY:"scroll",
+          overflowY: "scroll",
         }}
       >
-        {productData &&
+        {productData ? (
           productData.map((data) => (
-            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[60%] relative">
+            <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 h-[auto] relative">
               <img
                 class="rounded-t-lg h-[300px] w-[300px]"
                 src={data.img}
@@ -230,9 +229,16 @@ const Products = () => {
                 </button>
               </div>
             </div>
-          ))}
+          ))
+        ) : (
+          <div className="flex w-full justify-center">
+            <img
+              src="https://media.tenor.com/On7kvXhzml4AAAAj/loading-gif.gif"
+              alt="loading"
+            />
+          </div>
+        )}
       </Box>
-      
     </Box>
   );
 };
