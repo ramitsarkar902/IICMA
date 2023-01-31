@@ -18,7 +18,7 @@ import {
 
 export const getUser = async (dispatch, userId) => {
   try {
-    const user = await axios.post(`auth/signin/`, {
+    const user = await axios.post(`/api/auth/signin/`, {
       username: "hawk",
       password: "welcome",
     });
@@ -31,7 +31,7 @@ export const getUser = async (dispatch, userId) => {
 export const addProduct = async ({ title, file, desc, userId }) => {
   try {
     await axios.post(
-      `upload/product/${userId}`,
+      `/api/upload/product/${userId}`,
       {
         title: title,
         desc: desc,
@@ -52,7 +52,7 @@ export const getProducts = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`product/all/products`);
+      const res = await axios.get(`/api/product/all/products`);
       dispatch(productFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
@@ -62,7 +62,7 @@ export const getProducts = async (dispatch) => {
 
 export const deleteProduct = async ({ userId, id }) => {
   try {
-    await axios.delete(`product/${userId}`, { data: { id: id } });
+    await axios.delete(`/api/product/${userId}`, { data: { id: id } });
   } catch (error) {
     console.log(error);
   }
@@ -72,7 +72,7 @@ export const getCustomers = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`users/all/members`);
+      const res = await axios.get(`/api/users/all/members`);
       dispatch(customerFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
@@ -96,7 +96,7 @@ export const getAdmins = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`management/admins`);
+      const res = await axios.get(`/api/management/admins`);
       dispatch(adminFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
@@ -106,7 +106,7 @@ export const getAdmins = async (dispatch) => {
 
 export const addMember = async ({ username, email, name, img }) => {
   try {
-    await axios.post(`users/add/635846fdc9c208c9445c7c43`, {
+    await axios.post(`/api/users/add/635846fdc9c208c9445c7c43`, {
       username: username,
       email: email,
       name: name,
@@ -119,7 +119,7 @@ export const addMember = async ({ username, email, name, img }) => {
 
 export const deleteMember = async ({ username }) => {
   try {
-    await axios.post(`users/635846fdc9c208c9445c7c43`, {
+    await axios.post(`/api/users/635846fdc9c208c9445c7c43`, {
       username: username,
     });
   } catch (error) {
@@ -132,7 +132,7 @@ export const getNews = async (dispatch) => {
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
-      const res = await axios.get(`news/all/news`);
+      const res = await axios.get(`/api/news/all/news`);
       dispatch(newsFetchSuccess(res.data));
     }, 2000);
   } catch (error) {
@@ -142,7 +142,7 @@ export const getNews = async (dispatch) => {
 
 export const addNews = async ({ img, desc, title }) => {
   try {
-    await axios.post(`news/create/635846fdc9c208c9445c7c43`, {
+    await axios.post(`/api/news/create/635846fdc9c208c9445c7c43`, {
       title: title,
       desc: desc,
       img: img,
@@ -165,7 +165,7 @@ export const deleteNews = async ({ id }) => {
 export const login = async ({ username, password }, dispatch, navigate) => {
   setTimeout(async () => {
     try {
-      const res = await axios.post(`auth/signin`, {
+      const res = await axios.post(`/api/auth/signin`, {
         username: username,
         password: password,
       });
@@ -182,7 +182,7 @@ export const login = async ({ username, password }, dispatch, navigate) => {
 
 export const pwreset = async ({ username }, setmessage) => {
   try {
-    const res = await axios.post(`auth/forgotpassword`, {
+    const res = await axios.post(`/api/auth/forgotpassword`, {
       username: username,
     });
 
@@ -197,7 +197,7 @@ export const updatePassword = async (
   setMessage
 ) => {
   try {
-    const res = await axios.put(`users/${userid}`, {
+    const res = await axios.put(`/api/users/${userid}`, {
       username: username,
       currentpassword: currentpassword,
       newpassword: newpassword,
@@ -215,7 +215,7 @@ export const updateUserdetails = async (
   setuserMessage
 ) => {
   try {
-    const res = await axios.put(`users/${userid}`, {
+    const res = await axios.put(`/api/users/${userid}`, {
       username: username,
       password: password,
       name: name,
