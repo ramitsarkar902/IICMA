@@ -36,6 +36,16 @@ export const getProducts = async (setProducts) => {
   }
 };
 
+export const getNews = async (setNews) => {
+  try {
+    const res = await axios.get(`${base_url}news/all/news`);
+    console.log(res.data);
+    setNews(res.data);
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+
 export const getEvents = async (setEvents) => {
   try {
     const res = await axios.get(`${base_url}event/all/events`);
@@ -52,7 +62,7 @@ export const getAllMembers = async (setMembers) => {
     res.data.forEach((element) => {
       if (element.type === "member") r.push(element);
     });
-
+    console.log(r);
     setMembers(r);
   } catch (error) {
     console.log(error);

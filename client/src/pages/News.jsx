@@ -1,6 +1,13 @@
-import React from "react";
-
+import moment from "moment";
+import React, { useEffect, useState } from "react";
+import { getNews } from "../apiCalls";
 const News = () => {
+  const [n, setNews] = useState([]);
+
+  useEffect(() => {
+    getNews(setNews);
+  }, []);
+
   const members = [
     {
       id: 1,
@@ -50,25 +57,31 @@ const News = () => {
       <span id="two"> News and Updates</span>
       <hr class="w-[40vw] mx-auto mb-3" />
       <div class="flex justify-center flex-wrap gap-[40px] my-5">
-        {members.map((e) => (
-          <div className="flex flex-col justify-start w-[30vw] h-[60vh] rounded-lg shadow-gray-400 shadow-md hover:scale-110 cursor-pointer transition-all">
-            <img
-              className="h-[80%] w-[60%] mx-auto"
-              src="https://iicma.in/wp-content/uploads/2016/06/road-1453311_1280-299x225.jpg"
-              alt=""
-            />
-            <div
-              className="px-3 flex flex-col items-center w-full h-[60%]"
-              style={{
-                borderTop: "0.5px dotted gray",
-              }}
-            >
-              <p className="mt-3 text-base font-bold">{e.name}</p>
-              <p className="my-2 text-gray-400">{e.email}</p>
-              <p className="font-semibold">{e.position}</p>
+        {n &&
+          n.map((e) => (
+            <div className="flex flex-col justify-start w-[30vw] h-[60vh] rounded-lg shadow-gray-400 shadow-md hover:scale-110 cursor-pointer transition-all">
+              <img className="h-[80%] w-[60%] mx-auto" src={e.img} alt="" />
+              <div
+                className="px-3 flex flex-col items-center w-full h-[60%]"
+                style={{
+                  borderTop: "0.5px dotted gray",
+                }}
+              >
+                <p className="mt-3 text-base font-bold">{e.title}</p>
+                <p className="my-2 text-gray-400">{e.desc}</p>
+                <p className="font-semibold flex items-center">
+                  By -{"  "} <p className="text-gray-400 font-bold">{e.createdBy}</p>{" "}
+                </p>
+                <p className="font-semibold flex items-center">
+                  {" "}
+                  Created On :
+                  <p className="text-red-400">
+                    {moment(e.createdAt).utc().format("DD-MM-YYYY")}
+                  </p>
+                </p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
     </div>
   );
