@@ -12,6 +12,7 @@ import {
   News,
   Products,
   Updateuser,
+  Events
 } from "./pages";
 import { ProtectedRoute } from "./protectedRoute";
 import { themeSettings } from "./theme";
@@ -59,6 +60,14 @@ function App() {
               element={
                 <ProtectedRoute>
                   <Products />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/events"
+              element={
+                <ProtectedRoute>
+                  <Events />
                 </ProtectedRoute>
               }
             />

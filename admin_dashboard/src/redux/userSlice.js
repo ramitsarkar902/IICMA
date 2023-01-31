@@ -8,6 +8,7 @@ const initialState = {
   token: null,
   productData: null,
   customerData: null,
+  eventData: null,
   salesData: null,
   adminsData: null,
   newsData: null,
@@ -46,6 +47,10 @@ export const userSlice = createSlice({
       state.customerData = action.payload;
       state.isLoading = false;
     },
+    eventFetchSuccess: (state, action) => {
+      state.eventData = action.payload;
+      state.isLoading = false;
+    },
     newsFetchSuccess: (state, action) => {
       state.newsData = action.payload;
       state.isLoading = false;
@@ -80,6 +85,7 @@ export const {
   adminFetchSuccess,
   newsFetchSuccess,
   passwordUpdate,
+  eventFetchSuccess,
 } = userSlice.actions;
 
 export default userSlice.reducer;

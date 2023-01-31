@@ -49,17 +49,6 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
             <MenuIcon />
           </IconButton>
-          <FlexBetween
-            backgroundColor={theme.palette.background.alt}
-            borderRadius="9px"
-            gap="1rem"
-            p="0.1rem 1.5rem"
-          >
-            <InputBase placeholder="Search..." />
-            <IconButton>
-              <Search />
-            </IconButton>
-          </FlexBetween>
         </FlexBetween>
 
         {/* RIGHT SIDE */}
@@ -71,9 +60,9 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
               <LightModeOutlined sx={{ fontSize: "25px" }} />
             )}
           </IconButton>
-          <IconButton>
+          {/*  <IconButton>
             <SettingsOutlined sx={{ fontSize: "25px" }} />
-          </IconButton>
+          </IconButton> */}
 
           <FlexBetween>
             <Button

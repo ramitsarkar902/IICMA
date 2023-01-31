@@ -1,97 +1,88 @@
+import { Typography } from "@mui/material";
+import { Box, Container } from "@mui/system";
 import React from "react";
-import { styled } from "@mui/material/styles";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell, { tableCellClasses } from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import { Box, useTheme } from "@mui/material";
-import Button from "@mui/material/Button";
-import Container from "@mui/material/Container";
-import CssBaseline from "@mui/material/CssBaseline";
-import Grid from "@mui/material/Grid";
-import Link from "@mui/material/Link";
-import TextField from "@mui/material/TextField";
-import Typography from "@mui/material/Typography";
-import { DataGrid } from "@mui/x-data-grid";
-import { useDispatch, useSelector } from "react-redux";
-import { addMember, deleteMember, getCustomers } from "../../apiCalls";
+import { useSelector } from "react-redux";
 import Header from "../../components/Header";
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.head}`]: {
-    backgroundColor: theme.palette.common.black,
-    color: theme.palette.common.white,
-  },
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
+import moment from "moment";
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  "&:nth-of-type(odd)": {
-    backgroundColor: theme.palette.action.hover,
-  },
-  // hide last border
-  "&:last-child td, &:last-child th": {
-    border: 0,
-  },
-}));
-
-function createData(id, name, email, phone, position) {
-  return { id, name, email, phone, position };
-}
-
-const rows = [
-  createData(1001, "User1", "iicma@gmail.com", 9876543210, "Cluster Head"),
-  createData(1001, "User1", "iicma@gmail.com", 9876543210, "Cluster Head"),
-  createData(1001, "User1", "iicma@gmail.com", 9876543210, "Cluster Head"),
-  createData(1001, "User1", "iicma@gmail.com", 9876543210, "Cluster Head"),
-  createData(1001, "User1", "iicma@gmail.com", 9876543210, "Cluster Head"),
-];
-
-const Dashboard = (props) => {
+const Dashboard = () => {
+  const { userData } = useSelector((state) => state.user);
   return (
-    <>
-      <div className="">
-        <Box m="1.5rem 2.5rem">
-          <Header title="MEMBERS" />
-        </Box>
-        <TableContainer component={Paper} sx={{
-          width:"80vw",
-          margin:"auto",
-        }}>
-          <Table sx={{
-            }} aria-label="customized table">
-            <TableHead>
-              <TableRow>
-                <StyledTableCell>ID</StyledTableCell>
-                <StyledTableCell align="right">Name</StyledTableCell>
-                <StyledTableCell align="right">Email</StyledTableCell>
-                <StyledTableCell align="right">Phone Number</StyledTableCell>
-                <StyledTableCell align="right">Position</StyledTableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <StyledTableRow key={row.id}>
-                  <StyledTableCell component="th" scope="row">
-                    {row.id}
-                  </StyledTableCell>
-                  <StyledTableCell align="right">{row.name}</StyledTableCell>
-                  <StyledTableCell align="right">{row.email}</StyledTableCell>
-                  <StyledTableCell align="right">{row.phone}</StyledTableCell>
-                  <StyledTableCell align="right">
-                    {row.position}
-                  </StyledTableCell>
-                </StyledTableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
-    </>
+    <Container
+      sx={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        width: "100%",
+        height: "100%",
+      }}
+    >
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        <Typography
+          variant="h3"
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            marginBottom: "15px",
+          }}
+        >
+          Welcome{" "}
+          <p className="ml-3 text-red-500 font-semibold text-3xl">
+            {" "}
+            {userData.name}{" "}
+          </p>
+        </Typography>
+
+        <div class="max-w-sm w-full lg:max-w-full lg:flex">
+          <div
+            className="h-48 lg:h-auto lg:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden shadow-orange-400 shadow-lg"
+          >
+            <Box
+              component="img"
+              alt="profile"
+              src={
+                userData
+                  ? userData.img
+                  : "https://t4.ftcdn.net/jpg/00/65/77/27/360_F_65772719_A1UV5kLi5nCEWI0BNLLiFaBPEkUbv5Fv.jpg"
+              }
+              height="100%"
+              width="100%"
+              borderRadius="50%"
+              sx={{ objectFit: "cover" }}
+            />
+          </div>
+          <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal rounded-lg ml-2 shadow-xl shadow-indigo-500/50">
+            <div className="mb-8">
+              <p className="text-sm text-gray-600 flex items-center">
+               Name: {userData.name}
+              </p>
+              <div className="text-gray-900 font-bold text-xl mb-2">
+               User Name : {userData.username}
+              </div>
+              <p className="text-gray-700 text-base">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Voluptatibus quia, nulla! Maiores et perferendis eaque,
+                exercitationem praesentium nihil.
+              </p>
+            </div>
+            <div className="flex items-center">
+              <div className="text-sm">
+                <p className="text-gray-900 leading-none mb-2 font-bold">Contact - {userData.email}</p>
+                <p className="text-gray-900 leading-none font-bold mb-2">Mobile No - {userData.phoneNo}</p>
+                <p className="text-gray-600">Created At:  {moment(userData.createdAt).utc().format("DD-MM-YYYY")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </Box>
+    </Container>
   );
 };
 

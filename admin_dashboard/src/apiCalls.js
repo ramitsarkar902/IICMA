@@ -3,6 +3,7 @@ import axios from "axios";
 import {
   adminFetchSuccess,
   customerFetchSuccess,
+  eventFetchSuccess,
   fetchFailure,
   fetchStart,
   loginFailure,
@@ -128,7 +129,6 @@ export const deleteMember = async ({ username }) => {
 };
 
 export const getNews = async (dispatch) => {
-  console.log("start");
   try {
     dispatch(fetchStart());
     setTimeout(async () => {
@@ -174,7 +174,6 @@ export const login = async ({ username, password }, dispatch, navigate) => {
         navigate("/dashboard");
       }
     } catch (err) {
-      console.log(err);
       dispatch(loginFailure(err.response.data));
     }
   }, 2000);
@@ -223,10 +222,47 @@ export const updateUserdetails = async (
       phoneNo: phonenumber,
     });
     if (res.status === 200) {
-      console.log("Successfully changed details");
       setuserMessage("Successfully Updated Details");
     }
   } catch (err) {
     console.log(err);
+  }
+};
+
+export const getEvents = async (dispatch) => {
+  try {
+    dispatch(fetchStart());
+    setTimeout(async () => {
+      const res = await axios.get(`/api/event/all/events`);
+      dispatch(eventFetchSuccess(res.data));
+    }, 2000);
+  } catch (error) {
+    dispatchEvent(fetchFailure(error.message));
+  }
+};
+
+export const addEvent = async ({
+  userId,
+  title,
+  img,
+  desc,
+  organizingDate,
+}) => {
+  try {
+    await axios.post(`/api/event/create/${userId}`, {
+      img: img,
+      title: title,
+      desc: desc,
+      organizingDate: organizingDate,
+    });
+  } catch (error) {
+    console.log(error.message);
+  }
+};
+export const deleteEvent = async ({ eventId, id }) => {
+  try {
+    await axios.delete(`/api/event/${eventId}`, { data: { id: id } });
+  } catch (error) {
+    console.log(error.message);
   }
 };
