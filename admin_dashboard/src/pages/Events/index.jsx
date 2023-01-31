@@ -240,7 +240,6 @@ const Events = () => {
           </Button>
         </Box>
       </Box> */}
-      addparticipants data
     </Box>
   );
 };

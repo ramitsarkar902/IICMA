@@ -105,13 +105,14 @@ export const getAdmins = async (dispatch) => {
   }
 };
 
-export const addMember = async ({ username, email, name, img }) => {
+export const addMember = async ({ username, email, name, img, position }) => {
   try {
     await axios.post(`/api/users/add/635846fdc9c208c9445c7c43`, {
       username: username,
       email: email,
       name: name,
       img: img,
+      position: position,
     });
   } catch (error) {
     dispatchEvent(fetchFailure(error.message));

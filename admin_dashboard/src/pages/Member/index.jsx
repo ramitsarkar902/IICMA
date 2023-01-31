@@ -61,6 +61,11 @@ const Member = () => {
       flex: 0.5,
     },
     {
+      field: "position",
+      headerName: "Position",
+      flex: 0.5,
+    },
+    {
       field: "type",
       headerName: "Role",
       flex: 0.5,
@@ -75,6 +80,7 @@ const Member = () => {
       username: data.get("username"),
       name: data.get("name"),
       img: data.get("image"),
+      position: data.get("position"),
     });
     setTimeout(() => {
       getCustomers(dispatch);
@@ -160,6 +166,16 @@ const Member = () => {
                     type="text"
                     id="image"
                     autoComplete="new-image"
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    name="position"
+                    label="Member Position"
+                    type="text"
+                    id="position"
                   />
                 </Grid>
               </Grid>
