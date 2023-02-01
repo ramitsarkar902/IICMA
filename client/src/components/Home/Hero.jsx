@@ -6,7 +6,7 @@ const Hero = () => {
   const [popUp, setPopup] = useState(false);
   return (
     <>
-      <section id="Hero">
+      <section name="Home" id="Home">
         <div class="flex sm:flex-row flex-col-reverse sm:justify-between justify-end items-center w-full h-full md:px-[100px] px-0 sm:pb-0 sm:w-[80%]">
           <div class="flex flex-col sm:w-[50%] sm:h-auto w-full sm:px-0 px-2 sm:mt-0 mt-12">
             <h2>
@@ -33,7 +33,9 @@ const Hero = () => {
                 exact="true"
                 offset={-70}
               >
-                <span className="btn-book-a-table cursor-pointer" >Book a Table</span>
+                <span className="btn-book-a-table cursor-pointer">
+                  Book a Table
+                </span>
               </Link>
 
               <span

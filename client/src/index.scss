@@ -22,7 +22,9 @@
 :root {
   scroll-behavior: smooth;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body {
   font-family: var(--font-default);
   color: var(--color-default);
@@ -91,7 +93,7 @@ section {
   }
 }
 
-#Hero {
+#Home {
   height: 100vh;
 }
 
@@ -170,7 +172,7 @@ section {
   }
 }
 
-#Hero {
+#Home {
   text-align: start;
   background-color: #eee;
   color: var(--color-secondary);
