@@ -6,7 +6,7 @@
     },
     {
       "source": "/api/:path*/",
-      "destination": "https://iicmaserver-production.up.railway.app/:path*/"
+      "destination": "https://iicmaserver-production.up.railway.app/:path*"
     }
   ]
 }
