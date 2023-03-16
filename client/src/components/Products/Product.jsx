@@ -5,7 +5,7 @@ import { AiFillShopping, AiOutlineShoppingCart } from "react-icons/ai";
 const Product = ({ data }) => {
   return (
     <div className="product__wrapper flex justify-between">
-      <img src={data.img} alt="product__image" />
+      {/* <img src={data.img} alt="product__image" /> */}
 
       <div class="product-info flex flex-col w-[68%] justify-between">
         <div class="product-text flex flex-col">
