@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BsFillBookFill, BsShareFill } from "react-icons/bs";
 import { MdCall, MdEmail } from "react-icons/md";
-import { toast, ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { postContactUs } from "../../apiCalls";
 
@@ -86,15 +86,15 @@ const Contact = () => {
                 <div>
                   <BsFillBookFill className="icon" />
                   <p>
-                    Our Address
-                    <span>A108 Adam Street, New York, NY 535022</span>
+                    10th Floor, “Colonnade” Building,B/s. bSafal Privilon,
+                    <span>Nr. Zydus Wellness, Opp.</span>
                   </p>{" "}
                 </div>
                 <div>
                   <MdEmail className="icon" />
                   <p>
                     Email Us
-                    <span>contact@example.com</span>
+                    <span>info@iicma.in</span>
                   </p>
                 </div>
               </div>
@@ -103,7 +103,7 @@ const Contact = () => {
                   <MdCall className="icon" />
                   <p>
                     Call Us
-                    <span>+1 5589 55488 55</span>
+                    <span>+7383354764</span>
                   </p>
                 </div>
                 <div>

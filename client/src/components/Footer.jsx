@@ -11,8 +11,11 @@ const Footer = () => {
             <GoLocation className="mr-2 icon" />
             Address
           </p>
-          <span>108 Adam Street</span>
-          <span>New York,NY 50557-US</span>
+          <span>
+            10th Floor, “Colonnade” Building,B/s. bSafal Privilon, Nr. Zydus
+            Wellness, Opp.
+          </span>
+          <span>1Ahmedabad – 380015, Gujarat.</span>
         </div>
         <div className="flex flex-col sm:mb-0 mb-3">
           <p className="flex items-center mb-2 font-bold">
@@ -20,10 +23,10 @@ const Footer = () => {
             Reservations
           </p>
           <span>
-            <strong>Phone:</strong>+5633536546
+            <strong>Phone:</strong>7383354764
           </span>
           <span>
-            <strong>Email:</strong>test@gmail.com
+            <strong>Email:</strong> info@iicma.in
           </span>
         </div>
         <div className="flex flex-col sm:mb-0 mb-3">

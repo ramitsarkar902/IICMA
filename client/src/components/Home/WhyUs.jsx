@@ -9,10 +9,11 @@ const WhyUs = () => {
             <div className="conta1">
               <h1>Why Choose IICMA?</h1>
               <p>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Earum
-                esse beatae recusandae impedit voluptatum eius tempore
-                accusantium expedita molestiae optio, inventore laudantium
-                distinctio autem soluta unde dolorum sed dicta! Assumenda?
+                10th Edition of IICE is great moment for all of us taking place
+                at Hitex exhibition center, Hyderabad. Yet another year of
+                growth is expected in season of 2023 as members of IICMA
+                becoming more and more innovative in increasing their sales,
+                parlours and outlets across the country.
               </p>
               <button>Learn More</button>
             </div>

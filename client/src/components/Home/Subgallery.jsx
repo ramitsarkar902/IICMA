@@ -19,8 +19,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Magnam Tiste</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$5.95</p>
                 </div>
               </div>
               <div className="img12">
@@ -30,8 +28,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Aut Lia</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$14.95</p>
                 </div>
               </div>
               <div className="img13">
@@ -41,8 +37,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Est Eligendi</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$8.95</p>
                 </div>
               </div>
             </div>
@@ -54,8 +48,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Eos Luibusdam</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$12.95</p>
                 </div>
               </div>
               <div className="img22">
@@ -65,8 +57,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Eos Luibusdam</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$12.95</p>
                 </div>
               </div>
               <div className="img23">
@@ -76,8 +66,6 @@ const Subgallery = () => {
                 />
                 <div className="txt">
                   <h4>Laboriosam direva</h4>
-                  <p>Lorem, ipsum, dolor, sit, amet.</p>
-                  <p id="cost">$9.95</p>
                 </div>
               </div>
             </div>

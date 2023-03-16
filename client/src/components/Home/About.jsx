@@ -16,10 +16,10 @@ const About = () => {
                 src="https://templateiicma.vercel.app/assets/img/about.jpg"
                 alt=""
               />
-              <div className="write">
+              {/* <div className="write">
                 <h1>Book a table</h1>
                 <h1 id="num1">+1 5589 55488 55</h1>
-              </div>
+              </div> */}
             </div>
             <div className="cont22">
               <p id="p1">

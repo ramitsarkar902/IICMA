@@ -59,17 +59,17 @@ const Hero = () => {
               className="w-[100%] sm:h-[55%] h-full rounded-md"
             />
             {popUp && (
-              <div className="fixed z-50 top-0 right-0 h-[100%] w-full bg-black flex justify-center items-center">
+              <div className="fixed z-50 top-0 right-0 h-[100%] w-full bg-black flex flex-col justify-center items-center">
                 <CgRemove
                   onClick={(e) => {
                     e.preventDefault();
                     setPopup(false);
                   }}
-                  className="text-white w-8 h-8 absolute top-[20px] right-[30px] cursor-pointer"
+                  className="text-white w-8 h-8 cursor-pointer mb-4"
                 />
 
                 <iframe
-                  src="https://www.youtube.com/embed/UIyNFE_fdts"
+                  src="https://www.youtube.com/embed/aPCOa-Shbgk"
                   title="YouTube video player"
                   frameborder="0"
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
