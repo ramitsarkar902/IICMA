@@ -93,7 +93,7 @@ const Event = ({ data }) => {
       <div className={`event1 ${show || show2 ? "h-auto" : "h-[78vh]"}`}>
         <div className="contai1">
           <div className="eimg1">
-            <img src={data.img} alt="Eventimage" />
+            <img src="iicma_event.jpeg" alt="Eventimage" className="h-[20rem] w-full object-cover"/>
           </div>
         </div>
         <div className="contai2">
